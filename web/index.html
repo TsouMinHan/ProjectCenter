@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Project Center</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script type="text/javascript" src="/eel.js"></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.js'></script>
+</head>
+
+<body>
+	<div id="app">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<h2 class="text-center">{{ title }}</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="card col-sm-4" style="width: 18rem;" v-for="(value, key) in project">
+					<div class="card-body">
+						<h5 class="card-title">{{ key }}</h5>						
+						<a @click="run_script($event, this)" class="btn btn-primary" v-for="(file, index) in value['file_ls']" v-bind:id="key" v-bind:name="value['venv_status']">
+							{{ file }}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js'></script>
+	<script type="text/javascript" src="main.js"></script>
+
+</body>
+
+</html>
