@@ -1,5 +1,7 @@
 2020.08.23
 finished.
 
+modify img and README.md.
+
 2020.08.22
 專案開始
