@@ -8,7 +8,7 @@ import os
 
 global script
 
-_version = "0.0.1"
+_version = "0.0.2"
 
 config_file = Path("config.json")
 

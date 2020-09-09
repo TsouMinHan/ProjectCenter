@@ -1,3 +1,8 @@
+2020.09.09
+"0.0.2"
+fixed:
+ - change wording of log file. 
+
 2020.08.23
 finished.
 
