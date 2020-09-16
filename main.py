@@ -8,7 +8,7 @@ import os
 
 global script
 
-_version = "0.0.2"
+_version = "0.0.3"
 
 config_file = Path("config.json")
 
@@ -99,11 +99,10 @@ def run_script(id, file, venv):
     try:        
         if not script.poll(): # running
             if running_script_name != f"{id}\\{file}":
-                eel.show_message(f"請先關閉{running_script_name}")
+                eel.show_message(f"請先關閉 { running_script_name }")
                 return
             
-
-            subprocess.call(['taskkill', '/F', '/T', '/PID',  str(script.pid)])
+            subprocess.call(["taskkill", "/F", "/T", "/PID",  str(script.pid)])
 
             return False
 
@@ -127,5 +126,9 @@ def run_script(id, file, venv):
 if __name__ == "__main__":   
     data = load_json(config_file)
 
-    eel.init("web")
-    eel.start("index.html", size=(1100, 600))
+    try:
+        eel.init("web")
+        eel.start("index.html", size=(1100, 600))
+
+    except (SystemExit, MemoryError, KeyboardInterrupt):
+        pass

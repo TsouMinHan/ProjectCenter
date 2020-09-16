@@ -1,3 +1,8 @@
+2020.09.16
+"0.0.3"
+improved:
+ - close cmd window after app closed.
+
 2020.09.09
 "0.0.2"
 fixed:
