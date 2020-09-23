@@ -8,7 +8,7 @@ import os
 
 global script
 
-_version = "0.0.3"
+_version = "0.0.4"
 
 config_file = Path("config.json")
 
@@ -93,12 +93,12 @@ def get_data():
     return dc 
 
 @eel.expose
-def run_script(id, file, venv):
+def run_script(project_name, file, venv):
     global script, running_script_name
 
     try:        
         if not script.poll(): # running
-            if running_script_name != f"{id}\\{file}":
+            if running_script_name != f"{project_name}\\{file}":
                 eel.show_message(f"請先關閉 { running_script_name }")
                 return
             
@@ -109,17 +109,17 @@ def run_script(id, file, venv):
     except Exception as e:
         print(e)
 
-    path = Path(data["project_directory"], id, file)
+    path = Path(data["project_directory"], project_name, file)
 
     if venv:
-        venv_path = Path(data["project_directory"], id, data["venv_name"], "Scripts")
+        venv_path = Path(data["project_directory"], project_name, data["venv_name"], "Scripts")
 
         command = f"cmd /k cd /d {venv_path} & activate & cd /d {path.parent} & {path}"
     else:
         command = f"cmd /k cd /d {path.parent} & {path}"
 
     script = subprocess.Popen(command, shell=False)
-    running_script_name = f"{id}\\{file}"
+    running_script_name = f"{project_name}\\{file}"
 
     return True
 

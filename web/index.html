@@ -24,7 +24,7 @@
 				<div class="card col-sm-4" style="width: 18rem;" v-for="(value, key) in project">
 					<div class="card-body">
 						<h5 class="card-title">{{ key }}</h5>						
-						<a @click="run_script($event, this)" class="btn btn-primary" v-for="(file, index) in value['file_ls']" v-bind:id="key" v-bind:name="value['venv_status']">
+						<a @click="run_script($event, this)" class="btn btn-primary" v-for="(file, index) in value['file_ls']" v-bind:id="key + '-' + file" v-bind:name="value['venv_status']">
 							{{ file }}
 						</a>
 					</div>

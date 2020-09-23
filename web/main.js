@@ -16,7 +16,8 @@ let vm = new Vue({
             const id = event.currentTarget.id;
             const file = event.currentTarget.textContent.trim();
             const venv = document.getElementById(id).getAttribute("name");
-            const script_running_status = await eel.run_script(id, file, venv)();
+            const project_name = id.split("-")[0];
+            const script_running_status = await eel.run_script(project_name, file, venv)();
             // alert(script_running_status);
             if (script_running_status == true){
                 document.getElementById(id).classList.add('btn-danger');
